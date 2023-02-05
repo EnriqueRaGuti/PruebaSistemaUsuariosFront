@@ -1,0 +1,29 @@
+input {
+    width: 100%;
+    // margin-bottom: 5%;
+}
+
+button {
+    width: 100%;
+}
+
+.container-form {
+    border: 1px solid #dedede;
+    border-radius: 8px;
+}
+
+.error-message {
+    color: red;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    opacity: 0;
+    transition: all 0.5s ease-in;
+    margin: 1% 0 0 2%;
+    p {
+        margin: 0;
+    }
+    &.activeMessage {
+        opacity: 1;
+    }
+  }

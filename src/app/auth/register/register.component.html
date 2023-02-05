@@ -1,0 +1,27 @@
+<div class="col-2">
+    <button pButton pRipple type="button" icon="pi pi-arrow-left" class="p-button-rounded p-button-secondary p-button-outlined" (click)="volver()"></button>
+</div>
+<div class="col-6 col-offset-3">
+    <h1 style="text-align: center;">Registrate Aqui</h1>
+
+    <div class="col-8 col-offset-2 container-form p-5">
+        <form [formGroup]="formregistro">
+            <div class="mb-3">
+                <input type="text" pInputText placeholder="Nombre" formControlName="nombre"/>
+                <p class="ion-text-center error-message" [class.activeMessage]="formregistro.get('nombre')?.touched && formregistro.get('nombre')?.errors?.['required']">Este campo es requerido</p> 
+            </div>
+            <div class="mb-3">
+                <input type="text" pInputText placeholder="Correo" formControlName="correo"/>
+                <p class="ion-text-center error-message" [class.activeMessage]="formregistro.get('correo')?.touched 
+                        && (formregistro.get('correo')?.errors?.['required'] || formregistro.get('correo')?.errors?.['email'])">
+                        {{ formregistro.get('correo')?.errors?.['required']? 'Este campo es requerido' : 'Formato invalido'}}</p>
+            </div>
+            <div class="mb-3">
+                <input type="password" pInputText placeholder="Contraseña" formControlName="contraseña"/>
+                <p class="ion-text-center error-message" [class.activeMessage]="formregistro.get('contraseña')?.touched && formregistro.get('contraseña')?.errors?.['required']">Este campo es requerido</p> 
+            </div>
+        </form>
+        <button pButton label="Registrarme" class="p-button-info" (click)="registrar()" [disabled]="formregistro.invalid"></button>
+    </div>
+</div>
+<p-toast></p-toast>

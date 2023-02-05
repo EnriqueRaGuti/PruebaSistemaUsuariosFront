@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --z-primary-font-family: 'Rubik', sans-serif;
+    font-family: var(--z-primary-font-family);
+}

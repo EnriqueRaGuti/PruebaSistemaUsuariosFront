@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="col-12 flex">
+    <div class="col-6 pt-5" style="font-size: 2rem; text-align: center;">
+        <p class="mb-0">Pagina de Bienvenida</p>
+        <p class="m-0">Tienda Online</p>
+    </div>
+    <div class="col-6">
+        <div class="col-6 col-offset-3 p-5 container-login">
+            <h3>Iniciar Sesión</h3>
+            <form [formGroup]="formLogin">
+                <input type="text" pInputText placeholder="Nombre" formControlName="nombre"/>
+                <input type="text" pInputText placeholder="Contraseña" formControlName="contraseña"/>
+            </form>
+            <button pButton label="Iniciar Sesión" class="p-button-info" (click)="iniciarSesion()" [disabled]="false"></button>
+        </div>
+    </div>
+</div>

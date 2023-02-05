@@ -1,0 +1,54 @@
+<p-toast></p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+ <div>
+    <p-toolbar styleClass="mb-4 gap-2">
+        <button pButton pRipple type="button" icon="pi pi-arrow-left" class="p-button-rounded p-button-secondary p-button-outlined" (click)="volver()"></button>
+    </p-toolbar>
+    <p-table #dt1 [value]="usuarios" [tableStyle]="{'min-width': '50rem', 'padding': '1% 3% 0 3%'}" [paginator]="true" [rows]="10" [globalFilterFields]="['username']">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Contraseña</th>
+                <th>Correo</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-usuario>
+            <tr>
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.username}}</td>
+                <td>{{usuario.password ? '******' : 'No iene contraseña'}}</td>
+                <td>{{usuario.correo}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2" style="margin-right: 5px;" (click)="editProduct(usuario)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteProduct(usuario)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+ </div>
+ 
+<p-dialog [(visible)]="formDialog" [style]="{width: '450px'}" header="Detalle Medicamento" [modal]="true" styleClass="p-fluid" (onHide)="seCerroELdialog()">
+    <ng-template pTemplate="content">
+        <form [formGroup]="formActualizaRegistro">
+            <div class="field">
+                <label for="name">Nombre</label>
+                <input type="text" pInputText id="name" formControlName="nombre"/>
+            </div>
+            <div class="field">
+                <label for="name">Contraseña</label>
+                <input type="password" pInputText id="name" formControlName="contraseña"/>
+            </div>
+            <div class="field">
+                <label for="name">Correo</label>
+                <input type="text" pInputText id="name" formControlName="correo"/>
+            </div>    
+        </form>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Editar" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+    </ng-template>
+</p-dialog>
